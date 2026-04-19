@@ -1,0 +1,75 @@
+---
+import Icon from '~/components/Icon.astro';
+
+// Selected milestones — outcome-first, no fabricated metrics.
+// Dates reflect the public shape of the work; internal memories hold specifics.
+const milestones = [
+  {
+    when: '2026-04',
+    title: 'Four-site portfolio rebuild',
+    body:
+      'Master portfolio and three sister marketing sites (Trade, Edge, Grow) rebuilt on a shared Astro + Cloudflare Pages stack. Shared cyber-cobra mascot and design language across the estate.',
+  },
+  {
+    when: '2026-04',
+    title: 'Ayurpet — multi-storefront attribution live',
+    body:
+      'Cross-currency, cross-storefront attribution in production for an INR ad account driving both India and Global Shopify stores, with Amazon Seller Central sync via Airbyte → Postgres → agent view.',
+  },
+  {
+    when: '2026-04',
+    title: 'Public-repo licensing standard adopted',
+    body:
+      'BSL 1.1 → Apache 2.0 (2030-04-18) adopted across public agent repos — source-available now, fully open-source on schedule. Transparent moat: data and ops, not source code.',
+  },
+  {
+    when: '2026-04',
+    title: 'cTrader Open API integration',
+    body:
+      'cTrader Open API client and price feed built and registered with Spotware for live execution across forex, commodities, and equities, joining existing MT5 and Interactive Brokers paths.',
+  },
+  {
+    when: '2026-04',
+    title: 'Voice AI for COD confirmation',
+    body:
+      'Production voice agent handling Hindi and Hinglish COD confirmation calls for Shopify merchants. Every call becomes training data the merchant owns — not a moat that expires when we leave.',
+  },
+  {
+    when: 'Ongoing',
+    title: '8-model trading ensemble',
+    body:
+      'Trend, momentum, mean-reversion, ML, volume-profile, session, multi-timeframe, and technicals — routed through a shared ensemble engine feeding the Telegram client bot, admin API, and execution workers.',
+  },
+];
+---
+
+<section id="milestones" class="py-24 md:py-32 border-t border-border/60 bg-surface/30">
+  <div class="container-app grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-4 reveal">
+      <p class="eyebrow"><Icon name="bolt" size={14} /> Selected milestones</p>
+      <h2 class="mt-4">A short backstory.</h2>
+      <p class="mt-5 text-fluid-base text-muted">
+        The company runs lean: one small team, one shared server footprint,
+        three product lines shipping against real clients. Milestones below are
+        the ones we can talk about publicly.
+      </p>
+    </div>
+
+    <ol class="md:col-span-8 relative border-l border-border/60 pl-8 space-y-8" role="list">
+      {milestones.map((m) => (
+        <li class="relative reveal">
+          <span aria-hidden="true"
+                class="absolute -left-[37px] top-1.5 size-3 rounded-full bg-brand ring-4 ring-bg">
+          </span>
+          <div class="flex items-baseline gap-3 flex-wrap">
+            <span class="font-mono text-fluid-xs uppercase tracking-wider text-brand">
+              {m.when}
+            </span>
+            <h3 class="text-fluid-lg">{m.title}</h3>
+          </div>
+          <p class="mt-2 text-fluid-sm text-muted leading-relaxed max-w-prose-tight">{m.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

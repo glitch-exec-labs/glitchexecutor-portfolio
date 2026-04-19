@@ -1,0 +1,41 @@
+---
+import Icon from '~/components/Icon.astro';
+import ContactForm from '~/components/ContactForm.astro';
+import { site } from '~/lib/site';
+---
+
+<section id="contact" class="py-24 md:py-32 relative">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 mask-fade-b">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand/40 to-transparent"></div>
+  </div>
+
+  <div class="container-app grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5 reveal">
+      <p class="eyebrow"><Icon name="send" size={14} /> Get in touch</p>
+      <h2 class="mt-4">Tell us which product line fits your problem.</h2>
+      <p class="mt-5 text-fluid-lg text-muted">
+        We reply within one business day. If it's urgent, email us directly —
+        <a href={`mailto:${site.contactEmail}`} class="text-brand underline decoration-brand/40 hover:decoration-brand">{site.contactEmail}</a>.
+      </p>
+
+      <ul class="mt-8 space-y-3 text-fluid-sm text-muted">
+        <li class="flex items-start gap-2">
+          <span class="mt-[3px] text-brand"><Icon name="check" size={14} /></span>
+          Trading, betting, or marketing — we'll route you to the right sub-brand.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-[3px] text-brand"><Icon name="check" size={14} /></span>
+          No NDAs required to scope the first call.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-[3px] text-brand"><Icon name="check" size={14} /></span>
+          Honest answers if none of the product lines is the right fit yet.
+        </li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-7 reveal">
+      <ContactForm />
+    </div>
+  </div>
+</section>

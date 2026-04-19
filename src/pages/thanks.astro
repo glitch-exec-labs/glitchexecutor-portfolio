@@ -1,0 +1,31 @@
+---
+import Base from '~/layouts/Base.astro';
+import Icon from '~/components/Icon.astro';
+import Mascot from '~/components/Mascot.astro';
+---
+
+<Base
+  title="Thanks — we'll be in touch"
+  description="Your message reached Glitch Executor."
+  noindex
+  pageType="WebPage"
+>
+  <section class="container-app min-h-[60vh] flex items-center py-24">
+    <div class="grid gap-6 max-w-xl reveal">
+      <Mascot size={72} priority alt="" />
+      <p class="eyebrow"><Icon name="check" size={14} /> Message received</p>
+      <h1>Thanks — we'll be in touch within one business day.</h1>
+      <p class="text-fluid-lg text-muted">
+        If it's urgent, reply to the confirmation email directly and we'll move it to the top of the queue.
+      </p>
+      <div class="flex gap-3">
+        <a href="/" class="btn btn-secondary">
+          Back to home <Icon name="arrow-right" size={16} />
+        </a>
+        <a href="/#portfolio" class="btn btn-ghost">
+          See the portfolio <Icon name="arrow-up-right" size={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,59 @@
+---
+import { legalNav, site, subBrands } from '~/lib/site';
+import Icon from './Icon.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-32 border-t border-border/60 bg-bg">
+  <div class="container-app py-16 grid gap-10 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2.5 mb-4">
+        <img src="/assets/brand/mascot-256.png" alt="" width="32" height="32" class="w-8 h-8 rounded-md" loading="lazy" />
+        <span class="font-semibold">Glitch <span class="text-brand">Executor</span></span>
+      </div>
+      <p class="text-muted max-w-prose-tight text-fluid-sm">
+        {site.description}
+      </p>
+      <p class="text-subtle text-fluid-xs mt-4">
+        Holding company for Glitch Trade, Glitch Edge, and Glitch Grow.
+      </p>
+    </div>
+
+    <nav aria-label="Footer portfolio" class="text-fluid-sm">
+      <h3 class="eyebrow mb-4">Portfolio</h3>
+      <ul class="space-y-2 text-muted">
+        {subBrands.map((b) => (
+          <li>
+            <a class="hover:text-fg inline-flex items-center gap-1" href={b.href} rel="noopener">
+              {b.name}
+              <Icon name="arrow-up-right" size={14} />
+            </a>
+          </li>
+        ))}
+        <li><a class="hover:text-fg" href="/#how">How we work</a></li>
+        <li><a class="hover:text-fg" href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Footer legal" class="text-fluid-sm">
+      <h3 class="eyebrow mb-4">Legal</h3>
+      <ul class="space-y-2 text-muted">
+        {legalNav.map((l) => (
+          <li><a class="hover:text-fg" href={l.href}>{l.label}</a></li>
+        ))}
+        <li>
+          <a class="hover:text-fg inline-flex items-center gap-1" href={`mailto:${site.contactEmail}`}>
+            {site.contactEmail}
+            <Icon name="arrow-up-right" size={14} />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container-app flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-10 text-fluid-xs text-subtle">
+    <p>© {year} {site.parent}. All rights reserved.</p>
+    <p class="font-mono">Built on Astro · Deployed on Cloudflare</p>
+  </div>
+</footer>

@@ -1,0 +1,74 @@
+---
+import Icon from '~/components/Icon.astro';
+
+// Native <details>/<summary> = zero JS, fully accessible, works without
+// hydration. The chevron rotates via CSS on the open state.
+const faqs = [
+  {
+    q: 'What does Glitch Executor actually sell?',
+    a: 'Three product lines under one brand. Glitch Trade is an AI trading ensemble (cTrader, MT5, Interactive Brokers) sold to retail and pro traders via a Telegram client and admin dashboard. Glitch Edge is a sports intelligence engine for professional bettors and syndicates. Glitch Grow is an AI digital-marketing agency for DTC and e-commerce brands — Meta, Amazon, Shopify, Voice AI. Each has its own site (trade. / edge. / grow.) and its own go-to-market; this page is the holding-company portfolio.',
+  },
+  {
+    q: 'Are these productized or bespoke?',
+    a: 'A mix. Glitch Trade is the most productized — signed-up clients get a working Telegram bot on day one. Glitch Edge is currently delivered to a small number of design partners and is not open to public sign-ups. Glitch Grow runs a fixed-scope 30-day pilot followed by month-to-month engagement, so it\'s productized at the pilot boundary and bespoke inside it. If you need a clean line between "subscribe" and "hire us", ask on the first call.',
+  },
+  {
+    q: 'Do the three products share tech?',
+    a: 'Yes, intentionally. One ensemble router, one Postgres + pgvector data layer, one edge-compute footprint on Cloudflare Workers, and one shared execution-adapter pattern. The 8-model trading ensemble and the betting engine share most of their scoring primitives; attribution work built for e-commerce informs how the trading executor filters noisy signal feeds. Improvements compound across the portfolio instead of staying siloed per-product.',
+  },
+  {
+    q: 'Are you hiring? Open-source?',
+    a: 'Not actively hiring — the team stays deliberately small until each product line has its own revenue to fund a dedicated ops headcount. Public agent repos ship under BSL 1.1 today and convert to Apache 2.0 on 2030-04-18. You can read, fork, and self-host now; you can build a competing hosted product on it starting in 2030. If you want to contribute, open an issue before a PR — we optimize for narrow scope.',
+  },
+  {
+    q: 'How is the company structured?',
+    a: 'Glitch Executor Labs is the parent entity; Glitch Trade, Glitch Edge, and Glitch Grow are product lines underneath it, not separate companies. All three currently run on shared infrastructure; we split into isolated VMs once any one product line reaches meaningful standalone revenue. Security blast-radius is the trigger for that split, not arbitrary head-count.',
+  },
+  {
+    q: 'How do I reach the team?',
+    a: 'Email support@glitchexecutor.com and tell us which product line fits your problem. If you\'re not sure, describe the outcome you need — we\'ll route you to Trade, Edge, or Grow (or tell you honestly if none of them is the right fit yet). We reply within one business day.',
+  },
+];
+---
+
+<section id="faq" class="py-24 md:py-32 border-t border-border/40">
+  <div class="container-app grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-4 reveal">
+      <p class="eyebrow"><Icon name="spark" size={14} /> FAQ</p>
+      <h2 class="mt-4">The questions we get on the holding-co side.</h2>
+      <p class="mt-5 text-fluid-base text-muted">
+        Product-specific questions live on each sub-brand site. These are the
+        ones that only make sense at the portfolio level.
+      </p>
+    </div>
+
+    <div class="md:col-span-8">
+      <ul class="divide-y divide-border/60 border-y border-border/60" role="list">
+        {faqs.map((f) => (
+          <li>
+            <details class="group">
+              <summary
+                class="flex items-start justify-between gap-4 py-5 cursor-pointer list-none
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+              >
+                <span class="text-fluid-base font-medium pr-2">{f.q}</span>
+                <span
+                  aria-hidden="true"
+                  class="shrink-0 mt-1 size-6 inline-flex items-center justify-center rounded-full border border-border text-subtle
+                         transition-transform duration-200 group-open:rotate-45 group-open:text-brand group-open:border-brand/50"
+                >
+                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="pb-5 pr-8 text-fluid-sm text-muted leading-relaxed">
+                {f.a}
+              </div>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

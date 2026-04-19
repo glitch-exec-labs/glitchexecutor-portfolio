@@ -1,0 +1,51 @@
+---
+import Base from '~/layouts/Base.astro';
+import { site } from '~/lib/site';
+const updated = '2026-04-19';
+---
+
+<Base title="Privacy" description="How Glitch Executor collects, stores, and uses data." pageType="WebPage">
+  <section class="container-app py-20 max-w-prose-tight">
+    <p class="eyebrow">Legal</p>
+    <h1 class="mt-4">Privacy Policy</h1>
+    <p class="mt-4 text-subtle text-fluid-sm">Last updated: {updated}</p>
+
+    <div class="prose mt-10 text-muted [&_h2]:text-fg [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-fluid-xl [&_p]:my-3 [&_strong]:text-fg [&_ul]:list-disc [&_ul]:pl-6 [&_li]:my-1.5 [&_a]:text-brand">
+      <p>
+        Glitch Executor is the holding brand for Glitch Trade, Glitch Edge, and
+        Glitch Grow. This policy covers data collected through {site.domain}
+        (the portfolio site). Each sub-brand site carries its own privacy
+        policy for product-level data processing.
+      </p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Contact form submissions</strong> — name, email, company, and the message you send us. Stored in encrypted Postgres.</li>
+        <li><strong>Aggregate analytics</strong> — page views, referrers, device type. No cookies, no fingerprinting, no IP-to-user resolution.</li>
+        <li><strong>Turnstile challenge data</strong> — processed by Cloudflare under their privacy terms. We receive only pass/fail.</li>
+      </ul>
+
+      <h2>What we don't do</h2>
+      <ul>
+        <li>No cross-site tracking.</li>
+        <li>No selling of data to third parties.</li>
+        <li>No advertising cookies.</li>
+        <li>No enrichment of your form submission against third-party databases.</li>
+      </ul>
+
+      <h2>How to reach us</h2>
+      <p>
+        For data access, correction, or deletion requests, email
+        <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+        We respond within 30 days.
+      </p>
+
+      <h2>Client engagements</h2>
+      <p>
+        When we run services for a client through Glitch Trade, Glitch Edge, or
+        Glitch Grow, data processing is governed by the signed MSA / DPA — not
+        this page. Ask your account contact for the applicable agreement.
+      </p>
+    </div>
+  </section>
+</Base>

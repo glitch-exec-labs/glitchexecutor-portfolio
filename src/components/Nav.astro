@@ -1,0 +1,73 @@
+---
+import { nav, site } from '~/lib/site';
+import Icon from './Icon.astro';
+
+const { pathname } = Astro.url;
+---
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header
+  id="site-nav"
+  class="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-bg/70 backdrop-blur-xl"
+  style={`transition: background var(--dur) var(--ease-out-expo);`}
+>
+  <div class="container-app flex h-[var(--nav-h)] items-center justify-between">
+    <a
+      href="/"
+      class="flex items-center gap-2.5 font-semibold"
+      aria-label={`${site.name} home`}
+    >
+      <img
+        src="/assets/brand/mascot-256.png"
+        alt=""
+        width="36"
+        height="36"
+        class="w-9 h-9 rounded-lg"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="text-fluid-base">
+        Glitch <span class="text-brand">Executor</span>
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden md:flex items-center gap-7 text-fluid-sm text-muted">
+      {nav.map((item) => {
+        // Match if the path (minus hash) is a prefix of the current URL.
+        const bare = item.href.split('#')[0] || '/';
+        const active = bare !== '/' && pathname.startsWith(bare);
+        return (
+          <a
+            href={item.href}
+            class="relative hover:text-brand transition-colors"
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <a
+      href="/#contact"
+      class="btn btn-ghost text-fluid-sm"
+      data-cta="nav-contact"
+    >
+      Get in touch
+      <Icon name="arrow-up-right" size={16} />
+    </a>
+  </div>
+</header>
+
+<script>
+  // Elevate nav shadow once the user scrolls past the hero.
+  const nav = document.getElementById('site-nav');
+  if (nav) {
+    const onScroll = () => {
+      nav.classList.toggle('shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]', window.scrollY > 32);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

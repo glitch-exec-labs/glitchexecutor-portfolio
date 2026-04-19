@@ -1,0 +1,71 @@
+---
+import Icon from '~/components/Icon.astro';
+
+// "How we work" — cross-domain patterns that show up in every sub-brand.
+// Picks from the shared infra layer: ensemble router, owned data, edge compute, etc.
+const pillars = [
+  {
+    icon: 'cpu' as const,
+    title: 'One ensemble, many domains',
+    body:
+      'The same 8-model router that ranks trade signals also scores betting edges and ad-spend allocations. Trend, momentum, mean-reversion, session analysts — the patterns transfer once you own the plumbing.',
+  },
+  {
+    icon: 'database' as const,
+    title: 'Owned data, not rented access',
+    body:
+      'Every engagement leaves the client with their own Postgres, their own embeddings, their own audio and call datasets. Fine-tunes run on your data inside your infra — we do not recycle it into ours.',
+  },
+  {
+    icon: 'link' as const,
+    title: 'Cross-domain pattern reuse',
+    body:
+      'The attribution bridge built for a DTC brand informed how our trading executor filters noisy signal feeds. Work done in sports modelling sharpens marketing conversion windows. One codebase, three revenue surfaces.',
+  },
+  {
+    icon: 'shield' as const,
+    title: 'Vendor-lock-in avoidance, on purpose',
+    body:
+      'Open-weight models where latency and privacy matter. Frontier models where reasoning matters. cTrader, MT5, Interactive Brokers all pluggable behind one executor interface. No single API deprecation ends the product.',
+  },
+  {
+    icon: 'layers' as const,
+    title: 'Edge compute for the thin bits',
+    body:
+      'Webhooks, OAuth callbacks, contact forms, OG image generation — Cloudflare Workers and Pages Functions. Heavy ensemble work runs on dedicated GCP. Split by where latency hurts most.',
+  },
+  {
+    icon: 'code' as const,
+    title: 'Code is public by default',
+    body:
+      'Where it is safe to do so, our internal libraries ship under a BSL 1.1 licence that converts to Apache 2.0 in 2030. Transparent moat: the moat is the data and the ops, not the source.',
+  },
+];
+---
+
+<section id="how" class="py-24 md:py-32">
+  <div class="container-app">
+    <div class="max-w-2xl reveal">
+      <p class="eyebrow"><Icon name="code" size={14} /> How we work</p>
+      <h2 class="mt-4">Same agent patterns, different surface areas.</h2>
+      <p class="mt-5 text-fluid-lg text-muted">
+        Trade, Edge, and Grow look like three unrelated products from the outside.
+        Under the hood, they share the same router, the same data contracts, the
+        same execution primitives — so every improvement compounds across the
+        portfolio instead of staying siloed.
+      </p>
+    </div>
+
+    <ul class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3" role="list">
+      {pillars.map((p) => (
+        <li class="card p-6 md:p-7 reveal">
+          <span class="inline-flex size-9 items-center justify-center rounded-md bg-brand/10 text-brand border border-brand/20">
+            <Icon name={p.icon} size={18} />
+          </span>
+          <h3 class="mt-4 text-fluid-lg">{p.title}</h3>
+          <p class="mt-3 text-fluid-sm text-muted leading-relaxed">{p.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

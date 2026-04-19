@@ -1,0 +1,68 @@
+---
+import Icon from '~/components/Icon.astro';
+import Mascot from '~/components/Mascot.astro';
+---
+
+<section class="relative pt-20 pb-24 md:pt-28 md:pb-32 overflow-hidden">
+  {/* Ambient glow. Purely decorative; no layout impact. */}
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 h-[40rem] w-[60rem] max-w-[90vw] rounded-full
+                bg-[radial-gradient(circle_at_center,rgb(var(--color-brand)/0.18),transparent_60%)] blur-2xl"></div>
+    <div class="absolute top-40 right-[-10rem] h-[30rem] w-[30rem] rounded-full
+                bg-[radial-gradient(circle_at_center,rgb(var(--color-electric)/0.14),transparent_60%)] blur-2xl"></div>
+  </div>
+
+  <div class="container-app grid md:grid-cols-12 gap-10 items-center">
+    <div class="md:col-span-8 reveal">
+      <p class="eyebrow">
+        <Icon name="spark" size={14} />
+        Glitch Executor · Holding company
+      </p>
+      <h1 class="mt-5">
+        AI systems that move<br/>
+        <span class="gradient-text">money, prices, and signals.</span>
+      </h1>
+      <p class="mt-6 text-fluid-lg text-muted max-w-[60ch]">
+        One agent stack, three product lines.
+        <em class="not-italic text-fg">Glitch Trade</em> executes in markets,
+        <em class="not-italic text-fg">Glitch Edge</em> reads the field, and
+        <em class="not-italic text-fg">Glitch Grow</em> runs e-commerce — sharing
+        data, models, and battle-tested infrastructure across all three.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#portfolio" class="btn btn-primary">
+          See the portfolio
+          <Icon name="arrow-right" size={16} />
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          Get in touch
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+      </div>
+
+      <dl class="mt-10 grid grid-cols-3 gap-4 max-w-md" aria-label="Portfolio at a glance">
+        <div>
+          <dt class="text-fluid-xs uppercase tracking-wider text-subtle">Product lines</dt>
+          <dd class="mt-1 font-mono text-fluid-xl text-brand">3</dd>
+        </div>
+        <div>
+          <dt class="text-fluid-xs uppercase tracking-wider text-subtle">Ensemble models</dt>
+          <dd class="mt-1 font-mono text-fluid-xl text-brand">8+</dd>
+        </div>
+        <div>
+          <dt class="text-fluid-xs uppercase tracking-wider text-subtle">Shared stack</dt>
+          <dd class="mt-1 font-mono text-fluid-xl text-brand">1</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="md:col-span-4 reveal">
+      <div class="relative flex items-center justify-center">
+        <div aria-hidden="true" class="absolute inset-0 blur-3xl opacity-60
+                    bg-[radial-gradient(circle_at_center,rgb(var(--color-brand)/0.35),transparent_65%)]"></div>
+        <Mascot size={280} priority alt="Glitch Executor cyber cobra mascot" />
+      </div>
+    </div>
+  </div>
+</section>
